@@ -1301,6 +1301,66 @@ export type Database = {
       }
     }
     Views: {
+      blockchain_records_audit: {
+        Row: {
+          audit_status: string | null
+          block_hash: string | null
+          block_index: number | null
+          created_at: string | null
+          error_message: string | null
+          event_type: string | null
+          external_hash: string | null
+          external_status: string | null
+          external_transaction_id: string | null
+          id: string | null
+          is_audited: boolean | null
+          merkle_root: string | null
+          mined_at: string | null
+          nonce: number | null
+          target_id: string | null
+          target_type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          audit_status?: string | null
+          block_hash?: string | null
+          block_index?: number | null
+          created_at?: string | null
+          error_message?: string | null
+          event_type?: string | null
+          external_hash?: string | null
+          external_status?: string | null
+          external_transaction_id?: string | null
+          id?: string | null
+          is_audited?: boolean | null
+          merkle_root?: string | null
+          mined_at?: string | null
+          nonce?: number | null
+          target_id?: string | null
+          target_type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          audit_status?: string | null
+          block_hash?: string | null
+          block_index?: number | null
+          created_at?: string | null
+          error_message?: string | null
+          event_type?: string | null
+          external_hash?: string | null
+          external_status?: string | null
+          external_transaction_id?: string | null
+          id?: string | null
+          is_audited?: boolean | null
+          merkle_root?: string | null
+          mined_at?: string | null
+          nonce?: number | null
+          target_id?: string | null
+          target_type?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       blockchain_records_display: {
         Row: {
           audit_status: string | null

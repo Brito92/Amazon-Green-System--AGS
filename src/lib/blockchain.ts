@@ -102,3 +102,51 @@ export function shortHash(hash: string | null | undefined, size = 10) {
   if (!hash) return "—";
   return `${hash.slice(0, size)}...`;
 }
+
+// Audit-specific type without user_id for security
+export type BlockchainAuditRecord = Omit<BlockchainRecord, "user_id">;
+
+// Subscribe to blockchain events in real-time for audit
+export function subscribeToBlockchainAudits(
+  onUpdate: (record: BlockchainAuditRecord) => void,
+  onError?: (error: Error) => void
+) {
+  const channel = supabase.channel("blockchain-audit-live").on(
+    "postgres_changes",
+    {
+      event: "INSERT",
+      schema: "public",
+      table: "blockchain_records",
+    },
+    (payload) => {
+      // Remove user_id from the record for security
+      const { user_id, ...auditRecord } = payload.new as any;
+      onUpdate(auditRecord);
+    }
+  );
+
+  const subscription = channel.subscribe((status) => {
+    if (status === "CHANNEL_ERROR" && onError) {
+      onError(new Error("Erro ao conectar ao canal de auditoria blockchain"));
+    }
+  });
+
+  return () => supabase.removeChannel(channel);
+}
+
+// Fetch audit records without user_id
+export async function getBlockchainAuditRecords(limit = 50) {
+  const { data, error } = await supabase
+    .from("blockchain_records_audit")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) {
+    throw new Error(
+      error.message || "Falha ao consultar registros de auditoria blockchain."
+    );
+  }
+
+  return (data ?? []) as BlockchainAuditRecord[];
+}

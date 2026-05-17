@@ -41,7 +41,6 @@ function NativeIndexRedirect() {
   );
 }
 
-// ATUALIZADO: Informações mais precisas sobre o ecossistema
 const impactCards = [
   {
     value: "SAFs e Plantios",
@@ -60,7 +59,6 @@ const impactCards = [
   },
 ];
 
-// ATUALIZADO: Inclusão de Blockchain, Geolocalização e Moderação
 const features = [
   {
     icon: MapPinned,

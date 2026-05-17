@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AuthGuard } from "@/components/AuthGuard";
 import { AppShell } from "@/components/AppShell";
+import { BlockchainAuditLog } from "@/components/BlockchainAuditLog";
 import { EmptyState } from "@/components/EmptyState";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Button } from "@/components/ui/button";
@@ -362,6 +363,10 @@ function Dashboard() {
             )}
           </CardContent>
         </Card>
+      </section>
+
+      <section>
+        <BlockchainAuditLog />
       </section>
     </div>
   );

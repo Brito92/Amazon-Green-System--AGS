@@ -9,7 +9,10 @@ import { Logo } from "@/components/Logo";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Link, Loader2 } from "lucide-react";
+import {
+  ArrowRight,
+} from "lucide-react";
 
 const search = z.object({ redirect: z.string().optional() });
 
