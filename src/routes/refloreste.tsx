@@ -931,7 +931,7 @@ function NewConsortiumCard({
           </div>
 
           <div className="space-y-4 rounded-xl border border-border/60 p-4">
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="font-medium">Composição por espécies</h3>
                 <p className="text-sm text-muted-foreground">
@@ -945,7 +945,7 @@ function NewConsortiumCard({
             </div>
 
             {items.map((item, index) => (
-              <div key={item.localId} className="grid gap-3 rounded-xl border border-border/50 p-3 sm:grid-cols-[1.6fr_0.6fr_auto]">
+              <div key={item.localId} className="grid gap-3 rounded-xl border border-border/50 p-3 md:grid-cols-[1.6fr_0.6fr_auto]">
                 <div className="space-y-2">
                   <Label>Espécie {index + 1}</Label>
                   <Select value={item.speciesId} onValueChange={(value) => updateItem(item.localId, { speciesId: value })}>
@@ -990,7 +990,7 @@ function NewConsortiumCard({
 
             <InlineSpeciesCreator categories={categories} onCreated={onCreated} />
 
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid gap-3 grid-cols-1 md:grid-cols-3">
               <MetricCard
                 title="Total de mudas"
                 value={String(totalSeedlings)}

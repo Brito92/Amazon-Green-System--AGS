@@ -215,7 +215,7 @@ function ProdutoresPage() {
       )}
 
       <Dialog open={!!selectedProducer} onOpenChange={(open) => !open && setSelectedProducerId(null)}>
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="w-full max-w-[min(100vw,48rem)] max-h-[calc(100vh-3rem)] overflow-y-auto">
           {selectedProducer && (
             <div className="space-y-6">
               <DialogHeader>
