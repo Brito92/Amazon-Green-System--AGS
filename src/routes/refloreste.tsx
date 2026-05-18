@@ -406,14 +406,6 @@ function InlineSpeciesCreator({
 
   const submit = async () => {
     if (!user || !draft.commonName.trim() || !draft.categoryId || disabled) return;
-    let parsedWaterLiters: number;
-    try {
-      parsedWaterLiters = parsePositiveDecimal(waterLiters, "Litros utilizados");
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Valor de Ã¡gua invÃ¡lido.");
-      return;
-    }
-
     setBusy(true);
 
     const { data, error } = await supabase
@@ -1061,6 +1053,14 @@ function WaterLogCard({
     event.preventDefault();
     if (!user || !consortiumId || !waterLiters) {
       toast.error("Informe consórcio e litros utilizados.");
+      return;
+    }
+
+    let parsedWaterLiters: number;
+    try {
+      parsedWaterLiters = parsePositiveDecimal(waterLiters, "Litros utilizados");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Valor de água inválido.");
       return;
     }
 
